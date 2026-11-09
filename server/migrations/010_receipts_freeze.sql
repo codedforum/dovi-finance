@@ -1,0 +1,12 @@
+ALTER TABLE users ADD COLUMN frozen_at INTEGER;
+CREATE TABLE IF NOT EXISTS receipts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  code TEXT NOT NULL UNIQUE,
+  user_id INTEGER NOT NULL,
+  claim_id TEXT NOT NULL,
+  snapshot TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  revoked_at INTEGER,
+  views INTEGER NOT NULL DEFAULT 0
+);
+CREATE INDEX IF NOT EXISTS receipts_user ON receipts(user_id);

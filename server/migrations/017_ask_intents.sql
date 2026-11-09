@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS ask_intents (
+  day TEXT NOT NULL,
+  intent TEXT NOT NULL,
+  n INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, intent)
+);

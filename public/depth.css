@@ -1,0 +1,49 @@
+/* shared depth treatment for display headings and big figures */
+h2.head{text-shadow:0 1px 0 rgba(255,255,255,.85),0 2px 0 rgba(12,111,69,.16),0 3px 0 rgba(12,111,69,.1),0 10px 20px rgba(5,25,16,.14)}
+.raise h2.head,.engine h2.head,.hero h2.head{text-shadow:0 1px 0 rgba(36,228,125,.55),0 2px 0 rgba(12,111,69,.7),0 3px 0 rgba(10,90,57,.7),0 12px 22px rgba(0,0,0,.5)}
+h1.title{color:#fff;text-shadow:0 1px 0 #d8f7e6,0 2px 0 #aee9c9,0 3px 0 #7fd8ab,0 4px 0 #4fc189,0 5px 0 #2a9e68,0 6px 0 #0c6f45,0 7px 0 #0a5a39,0 10px 8px rgba(0,0,0,.35),0 20px 34px rgba(0,0,0,.45),0 0 40px rgba(36,228,125,.22)}
+h1.title .g{color:#5cf0a0;text-shadow:0 1px 0 #b8f7d6,0 2px 0 #7fe9b2,0 3px 0 #3fcf8b,0 4px 0 #1f9f64,0 5px 0 #0c6f45,0 6px 0 #0a5a39,0 7px 0 #07412a,0 10px 8px rgba(0,0,0,.35),0 20px 34px rgba(0,0,0,.5),0 0 36px rgba(92,240,160,.45)}
+.closing h2{text-shadow:0 1px 0 rgba(255,255,255,.7),0 2px 0 rgba(255,255,255,.4),0 3px 0 rgba(12,111,69,.35),0 12px 20px rgba(7,60,35,.28)}
+.cc-amt,.hero-card .bal{text-shadow:0 1px 0 #d8f7e6,0 2px 0 #7fd8ab,0 3px 0 #2a9e68,0 4px 0 #0c6f45,0 5px 0 #0a5a39,0 12px 16px rgba(0,0,0,.45)}
+.agent-card h1{text-shadow:0 1px 0 rgba(255,255,255,.75),0 2px 0 rgba(255,255,255,.4),0 3px 0 rgba(12,111,69,.35),0 12px 20px rgba(7,60,35,.3)}
+.page h1,.claim-card .amt{text-shadow:0 1px 0 #fff,0 2px 0 #bfeed3,0 3px 0 #8fdcb2,0 4px 0 #5fc690,0 12px 16px rgba(5,25,16,.18)}
+.w-copy h1{text-shadow:0 1px 0 #fff,0 2px 0 #bfeed3,0 3px 0 #8fdcb2,0 4px 0 #5fc690,0 5px 0 #3fae78,0 14px 18px rgba(5,25,16,.2)}
+.w-copy h1 em{text-shadow:0 1px 0 #d8f7e6,0 2px 0 #8fdcb2,0 3px 0 #3fae78,0 4px 0 #0c6f45,0 5px 0 #0a5a39,0 14px 18px rgba(5,25,16,.28)}
+@media(max-width:860px){
+  .w-copy h1{text-shadow:0 1px 0 #d8f7e6,0 2px 0 #aee9c9,0 3px 0 #7fd8ab,0 4px 0 #4fc189,0 5px 0 #2a9e68,0 6px 0 #0c6f45,0 7px 0 #0a5a39,0 9px 6px rgba(0,0,0,.35),0 16px 22px rgba(0,0,0,.4),0 0 28px rgba(36,228,125,.28)}
+  .w-copy h1 em{text-shadow:0 1px 0 #b8f7d6,0 2px 0 #7fe9b2,0 3px 0 #3fcf8b,0 4px 0 #1f9f64,0 5px 0 #0c6f45,0 6px 0 #0a5a39,0 7px 0 #07412a,0 9px 6px rgba(0,0,0,.35),0 16px 22px rgba(0,0,0,.45),0 0 30px rgba(92,240,160,.5)}
+  h1.title{text-shadow:0 1px 0 #d8f7e6,0 2px 0 #aee9c9,0 3px 0 #7fd8ab,0 4px 0 #4fc189,0 5px 0 #2a9e68,0 6px 0 #0c6f45,0 8px 6px rgba(0,0,0,.35),0 14px 22px rgba(0,0,0,.4)}
+}
+@media(max-width:860px){.hero{padding-top:108px}}
+/* mobile image sizing: explicit heights so no browser feature is needed */
+@media(max-width:860px){
+  .w-art{height:clamp(280px,48vh,440px);max-height:none;min-height:0;aspect-ratio:auto;width:100%;max-width:100%}
+  .w-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+  .pfig{height:clamp(300px,52vh,460px);max-width:100%;width:100%}
+  .pfig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;animation:none}
+  .pfig{position:relative}
+}
+@media(max-width:860px) and (max-height:640px){.w-art{height:clamp(220px,40vh,300px)}.pfig{height:clamp(240px,44vh,320px)}}
+@media(max-width:860px){
+  .imgframe{position:relative;width:100%;height:clamp(210px,32vh,300px)}
+  .imgframe img,.dark-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+}
+@media(max-width:860px) and (max-height:640px){.imgframe{height:clamp(180px,30vh,240px)}}
+
+/* comfortable tap targets everywhere */
+.foot-col a{display:block;padding:10px 0;margin:0}
+.nav-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
+.page .note a,.shell .note a{display:inline-block;padding:11px 8px}
+h2.sec a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.quick .btn,.quick button{min-height:40px;padding:0 16px}
+.toast .ta a,.toast .ta button{min-height:40px;padding:0 16px;display:inline-flex;align-items:center}
+@media(max-width:860px){
+  .sendform button[type=submit]{position:sticky;bottom:calc(92px + env(safe-area-inset-bottom));z-index:3;box-shadow:0 12px 30px rgba(7,19,15,.22)}
+}
+.fineprint a{display:inline-block;padding:10px 6px}
+
+/* paint cost: skip off-screen work */
+.grain{display:none}
+.off,.off *{animation-play-state:paused!important}
+
+.sitefoot{background:var(--ink);color:#9db0a6;margin-top:56px;padding:44px 16px 28px}.sitefoot .sf-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}.sitefoot .brand{color:var(--paper);margin-bottom:10px}.sitefoot .sf-brand p{max-width:260px;font-size:14px;line-height:1.5;margin:0}.sitefoot .sf-cols{display:flex;gap:56px;flex-wrap:wrap}.sitefoot b{display:block;color:var(--paper);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}.sitefoot .sf-cols a{display:block;color:#9db0a6;text-decoration:none;font-size:14px;padding:9px 0;min-height:24px}.sitefoot .sf-cols a:hover,.sitefoot .sf-cols a:focus-visible{color:var(--green);text-decoration:underline}.sitefoot .sf-note{max-width:760px;margin:28px auto 0;padding-top:18px;border-top:1px solid rgba(157,176,166,.25);font-size:13px}

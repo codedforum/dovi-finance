@@ -1,0 +1,28 @@
+{
+  "name": "dovi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DOVI: send USDC to an X handle or an email, they claim with one login. Live on Base Sepolia.",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "check": "node tools/check.mjs",
+    "bust": "node tools/bust.mjs",
+    "forge": "forge test --root contracts"
+  },
+  "engines": {
+    "node": ">=25"
+  },
+  "dependencies": {
+    "@coinbase/cdp-sdk": "^1.55.0",
+    "@mysten/sui": "^2.27.1",
+    "@noble/curves": "^2.4.0",
+    "@noble/secp256k1": "^3.2.0",
+    "@whetstone-research/doppler-sdk": "^1.0.43",
+    "blakejs": "^1.2.1",
+    "bs58": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "jsonwebtoken": "^9.0.3",
+    "viem": "^2.56.8"
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE waitlist ADD COLUMN source TEXT NOT NULL DEFAULT 'waitlist';

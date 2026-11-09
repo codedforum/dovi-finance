@@ -1,0 +1,1 @@
+ALTER TABLE x_outbox ADD COLUMN kind TEXT;

@@ -1,0 +1,24 @@
+node_modules/
+.env
+.env.*
+*.key
+*.pem
+*.bak
+*.bak-*
+*.orig
+# session scratch: patches, headless checks, screenshots
+_*.py
+_*.js
+_*.png
+
+data/
+*.db
+*.db-*
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+logs/
+
+# downloaded library tarball, not source
+contracts/lib/openzeppelin-contracts-upgradeable-dl/
+!.env.example

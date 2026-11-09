@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">DOVI - Money that moves. Capital that builds.</title>
+  <desc id="desc">Walletless dollars and protected global funding, built on Sui.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07130f"/><stop offset="1" stop-color="#0a281c"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#24e47d" stop-opacity=".8"/><stop offset="1" stop-color="#24e47d" stop-opacity="0"/></radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="20"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="975" cy="315" r="250" fill="url(#glow)" opacity=".45"/>
+  <g fill="none" stroke-linecap="round"><path d="M620 450C760 420 750 190 900 195s135 245 260 120" stroke="#24e47d" stroke-width="19" opacity=".9"/><path d="M610 490C760 455 790 280 920 280s130 130 260 95" stroke="#ffe59b" stroke-width="5" opacity=".65"/><path d="M650 370C740 350 820 90 1025 120" stroke="#ded5ff" stroke-width="4" opacity=".55"/></g>
+  <g fill="#f3f1e9" opacity=".8"><circle cx="675" cy="438" r="8"/><circle cx="790" cy="338" r="8"/><circle cx="901" cy="195" r="8"/><circle cx="1058" cy="339" r="8"/></g>
+  <g transform="translate(72 66) scale(.62)"><rect width="128" height="128" rx="36" fill="#24e47d"/><path d="M35 27h28c24 0 40 14 40 37s-16 37-40 37H35V27Zm27 55c13 0 20-6 20-18s-7-18-20-18h-6v36h6Z" fill="#07130f"/><path d="M42 35v58" stroke="#f3f1e9" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="35" r="4" fill="#ffe59b"/><circle cx="42" cy="93" r="4" fill="#ded5ff"/></g>
+  <text x="168" y="132" fill="#f3f1e9" font-family="Inter,Arial,sans-serif" font-size="50" font-weight="900" letter-spacing="9">DOVI</text>
+  <text x="72" y="285" fill="#f3f1e9" font-family="Inter,Arial,sans-serif" font-size="70" font-weight="850" letter-spacing="-4">Money that moves.</text>
+  <text x="72" y="360" fill="#24e47d" font-family="Inter,Arial,sans-serif" font-size="70" font-weight="850" letter-spacing="-4">Capital that builds.</text>
+  <text x="76" y="436" fill="#9fb2a9" font-family="Inter,Arial,sans-serif" font-size="26">Walletless dollars and protected global funding.</text>
+  <g transform="translate(74 509)"><rect width="172" height="52" rx="26" fill="#f3f1e9" fill-opacity=".1" stroke="#f3f1e9" stroke-opacity=".2"/><circle cx="28" cy="26" r="7" fill="#24e47d"/><text x="49" y="34" fill="#f3f1e9" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">Built on Sui</text></g>
+</svg>

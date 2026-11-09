@@ -1,0 +1,7 @@
+[
+  {"id":"base","name":"Base","kind":"evm","chainId":8453,"network":"mainnet","verified":true,"status":"live","claims":true,"asset":{"symbol":"USDC","decimals":6,"address":"0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"},"explorerTx":"https://basescan.org/tx/"},
+  {"id":"solana","name":"Solana","kind":"solana","network":"unverified","verified":false,"status":"soon","claims":false,"asset":{"symbol":"USDC","decimals":6,"address":"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"},"explorerTx":"https://explorer.solana.com/tx/"},
+  {"id":"sui","name":"Sui","kind":"sui","network":"unverified","verified":false,"status":"soon","claims":false,"asset":{"symbol":"USDC","decimals":6,"address":"0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC"},"explorerTx":"https://suiscan.xyz/mainnet/tx/"},
+  {"id":"arc","name":"Arc","kind":"evm","chainId":5042002,"network":"testnet","verified":false,"status":"soon","claims":false,"asset":{"symbol":"USDC","decimals":6,"address":"0x3600000000000000000000000000000000000000"},"explorerTx":""},
+  {"id":"robinhood","name":"Robinhood Chain","kind":"evm","chainId":46630,"network":"testnet","verified":false,"status":"soon","claims":false,"asset":{"symbol":"USDG","decimals":6,"address":""},"explorerTx":""}
+]

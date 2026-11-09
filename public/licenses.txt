@@ -1,0 +1,15 @@
+Third party software and fonts used by DOVI
+
+Inter (font, self hosted at /fonts/inter.woff2)
+  Copyright The Inter Project Authors. Licensed under the SIL Open Font License 1.1.
+  License text: https://openfontlicense.org/open-font-license-official-text/
+
+Fraunces (font, self hosted at /fonts/fraunces.woff2)
+  Copyright The Fraunces Project Authors. Licensed under the SIL Open Font License 1.1.
+  License text: https://openfontlicense.org/open-font-license-official-text/
+
+QR Code Generator for JavaScript (/js/qrcode.min.js)
+  Copyright Kazuhiko Arase. MIT License. The notice is kept at the top of the file.
+
+Coinbase CDP embedded wallet SDK (loaded from esm.sh when you sign in)
+  Provided by Coinbase under its own terms: https://www.coinbase.com/legal

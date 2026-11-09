@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DOVI is live on the Base test network</title>
+<meta name="description" content="Official announcement. DOVI lets you send dollars to an X handle or an email. They claim with one login. Live now on the Base test network with test USDC.">
+<meta name="theme-color" content="#07130f">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="DOVI">
+<meta property="og:url" content="https://dovi.finance/announcement">
+<meta property="og:title" content="DOVI is live on the Base test network">
+<meta property="og:description" content="Send dollars to an X handle or an email. They claim with one login. Official announcement.">
+<meta property="og:image" content="https://dovi.finance/brand/dovi-claim-20261025.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@DoviFinance">
+<link rel="canonical" href="https://dovi.finance/announcement">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 900;font-display:swap;src:url(/fonts/inter.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/fraunces.woff2) format("woff2")}
+:root{--ink:#07130f;--ink-2:#0c1c16;--ink-3:#12241c;--mint:#24e47d;--mint-2:#5cf0a0;--mint-d:#0c6f45;--paper:#f3f1e9;--white:#fff;--gold:#ffe59b;--line:rgba(7,19,15,.14);--muted:#47524c;--muted-d:#9fb0a8;--display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.skip{position:absolute;left:12px;top:-60px;background:var(--mint);color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;z-index:10}.skip:focus{top:12px}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header.top{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.14em;text-decoration:none;font-size:15px}
+.brand img{width:34px;height:34px;border-radius:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 24px;border-radius:999px;background:var(--mint);color:var(--ink);font-weight:800;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s;box-shadow:0 12px 36px rgba(36,228,125,.28)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(36,228,125,.38)}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:inherit;border:1px solid rgba(255,255,255,.28);box-shadow:none}
+.btn.ghost.dark{color:var(--ink);border-color:rgba(7,19,15,.3)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.sm{min-height:44px;padding:0 18px;font-size:14px}
+.hero{position:relative;padding:56px 0 84px}
+header.top:before{content:"";position:absolute;right:-60px;top:-140px;width:640px;height:640px;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(36,228,125,.26),transparent 66%);animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(-40px,30px)}}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--paper)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(36,228,125,.6)}70%{box-shadow:0 0 0 10px rgba(36,228,125,0)}100%{box-shadow:0 0 0 0 rgba(36,228,125,0)}}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,7vw,76px);line-height:1;letter-spacing:-.02em;margin:0 0 20px;text-wrap:balance;position:relative}
+h1 em{font-style:italic;color:var(--mint)}
+.lede{font-size:clamp(18px,2.4vw,22px);line-height:1.55;color:#cfdad4;max-width:34em;margin:0 0 30px;position:relative}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;position:relative}
+.small{font-size:14px;color:var(--muted-d);margin:18px 0 0;position:relative}
+.hin{animation:rise .8s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+main section{padding:64px 0 0}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.06;margin:0 0 20px;text-wrap:balance}
+p{line-height:1.65;margin:0 0 14px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
+.steps li{counter-increment:s;padding-top:18px;border-top:2px solid var(--line);position:relative}
+.steps li:before{content:counter(s);position:absolute;top:-15px;left:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--mint);font-weight:800;font-size:14px;display:grid;place-items:center}
+.steps b{display:block;font-family:var(--display);font-weight:600;font-size:21px;margin:0 0 6px}
+.steps span{color:var(--muted);line-height:1.55}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);line-height:1.5;transition:padding-left .3s cubic-bezier(.16,1,.3,1)}
+.list li:hover{padding-left:8px}
+.list svg{flex:none;width:22px;height:22px;margin-top:2px}
+.list b{font-weight:800}
+.soon{background:var(--ink);color:var(--paper);border-radius:26px;padding:30px 30px 14px;margin-top:64px}
+.soon h2{color:var(--paper)}
+.soon .list li{border-color:rgba(255,255,255,.14)}
+.soon p,.soon .list{color:#cfdad4}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fact{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:6px;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+.fact:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(5,25,16,.12)}
+.fact small{color:var(--muted);font-weight:700;font-size:13px}
+.fact b{font-size:17px;overflow-wrap:anywhere}
+.cta-end{text-align:center;padding:72px 0 24px}
+.cta-end .btn{margin:6px}
+footer{margin-top:72px;background:var(--ink);color:var(--muted-d);padding:36px 0 44px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 14px}
+footer a{color:var(--muted-d);text-decoration:none;padding:10px 0;min-height:44px;display:inline-flex;align-items:center}
+footer a:hover{color:var(--mint)}
+footer p{font-size:14px;margin:0}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:32px}.facts{grid-template-columns:1fr}.soon{padding:24px 20px 8px}.hero{padding:36px 0 64px}}
+@media (prefers-reduced-motion:reduce){.hin,header.top:before,.pill i{animation:none}.js .rv{opacity:1;transform:none;transition:none}.btn,.fact,.list li{transition:none}}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add("js")</script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <div class="bar"><a class="brand" href="/" aria-label="DOVI home"><img src="/mark.svg" alt="" width="34" height="34">DOVI</a><a class="btn sm" href="/app">Open DOVI</a></div>
+    <div class="hero">
+      <div class="meta hin"><span class="pill"><i></i>Official announcement</span><span class="pill">6 November 2026</span></div>
+      <h1 class="hin" style="--d:.06s">DOVI is live on the <em>Base test network</em>.</h1>
+      <p class="lede hin" style="--d:.16s">Send dollars to an X handle or an email. They claim with one login. No wallet addresses to paste, no seed phrase, no extension to install.</p>
+      <div class="ctas hin" style="--d:.28s"><a class="btn" href="/app">Open DOVI</a><a class="btn ghost" href="/judges">Try it in 60 seconds</a></div>
+      <p class="small hin" style="--d:.4s">Test network, test USDC. No real money moves yet.</p>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <section class="rv" aria-labelledby="h-how">
+      <h2 id="h-how">How it works</h2>
+      <ol class="steps">
+        <li><b>Type a handle or an email</b><span>Add an amount. You never need their wallet address.</span></li>
+        <li><b>They sign in once</b><span>A wallet is created for them and the dollars are theirs.</span></li>
+        <li><b>Not claimed in time?</b><span>It expires after 7 days. You can take it back in full, with no fee, and you can take it back earlier too.</span></li>
+      </ol>
+    </section>
+
+    <section class="rv" aria-labelledby="h-live">
+      <h2 id="h-live">What you can do today</h2>
+      <ul class="list">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Pay by handle or email.</b> The money waits in an on-chain escrow until it is claimed.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Take it back.</b> Before it is claimed, with no fee.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Pay from X.</b> After you link X and turn it on, tweet <b>@DoviFinance send 2 usdc to @name</b> and DOVI sends it inside the limits you set. The reply has no link, and the recipient gets a direct message with the claim steps if their messages are open.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Pay many people at once.</b> One list, one approval, with locked and scheduled payouts.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Ask in plain words.</b> The money agent shows an exact preview and waits for your approval.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Let an AI agent pay for you.</b> A send API with a hard dollar cap per payment and per day, and a key you can revoke.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Links, receipts and statements.</b> Reusable payment links, shareable proof pages and monthly statements.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#24e47d"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#07130f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Withdraw.</b> To your own Base wallet.</span></li>
+      </ul>
+    </section>
+
+    <div class="soon rv" role="region" aria-labelledby="h-soon">
+      <h2 id="h-soon">Not live yet, said plainly</h2>
+      <ul class="list">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#ffe59b" stroke-width="2.2" stroke-dasharray="3 4"/></svg><span><b>Mainnet.</b> DOVI runs on Base Sepolia with test USDC until it is proven. Nothing here moves real money.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#ffe59b" stroke-width="2.2" stroke-dasharray="3 4"/></svg><span><b>Real naira.</b> Paying naira for USDC and cashing out to a Nigerian bank both work on the test network today, with simulated naira. Real naira needs a licensed partner and mainnet.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#ffe59b" stroke-width="2.2" stroke-dasharray="3 4"/></svg><span><b>Private send.</b> Planned for the mainnet launch.</span></li>
+      </ul>
+    </div>
+
+    <section class="rv" aria-labelledby="h-check">
+      <h2 id="h-check">Check it yourself</h2>
+      <p>A payment is only as good as what you can verify. These are public.</p>
+      <div class="facts">
+        <a class="fact" href="https://sepolia.basescan.org/address/0x07e5bE5687b739024f28bf8c85faf1d6E14fDbd4" rel="noopener"><small>Escrow contract on Base Sepolia</small><b>0x07e5bE5687b739024f28bf8c85faf1d6E14fDbd4</b></a>
+        <a class="fact" href="/live"><small>Live numbers</small><b>Counts straight from the claims table</b></a>
+        <a class="fact" href="/judges"><small>Try it in 60 seconds</small><b>A short path with real on-chain proof</b></a>
+        <a class="fact" href="/terms"><small>Fee</small><b>1 percent, minimum $0.10, only when a payment is claimed</b></a>
+      </div>
+      <p style="margin-top:18px;color:var(--muted)">Sending to someone who already uses DOVI has no DOVI fee. DOVI never holds your keys. Your wallet is created and protected by Coinbase.</p>
+    </section>
+
+    <section class="rv" aria-labelledby="h-built">
+      <h2 id="h-built">Built for Vibeathon 02</h2>
+      <p>DOVI is an entry in Vibestarter's Vibeathon 02. It was built during build week and is open to try today. Follow <a href="https://x.com/DoviFinance" rel="noopener"><b>@DoviFinance</b></a> on X for updates.</p>
+    </section>
+
+    <div class="cta-end rv">
+      <h2>Send your first dollars in under a minute.</h2>
+      <p style="color:var(--muted)">Sign in, pick a handle, and send. They claim it with one login.</p>
+      <a class="btn" href="/app">Open DOVI</a><a class="btn ghost dark" href="/judges">Try it in 60 seconds</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/">Home</a><a href="/app">Open DOVI</a><a href="/live">Live numbers</a><a href="/help">Help</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/refunds">Refunds</a><a href="/cookies">Cookies</a></nav>
+    <p>Beta on the Base test network. Test USDC only. Balances are not insured deposits.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e)});
+  setTimeout(function(){els.forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')})},300);
+})();
+</script>
+<script type="module" src="/js/consent.js?v=dev"></script>
+</body>
+</html>

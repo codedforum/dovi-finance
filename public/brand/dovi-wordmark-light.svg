@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 128" role="img" aria-labelledby="title">
+  <title id="title">DOVI</title>
+  <g transform="translate(0)"><rect width="128" height="128" rx="36" fill="#24e47d"/><path d="M35 27h28c24 0 40 14 40 37s-16 37-40 37H35V27Zm27 55c13 0 20-6 20-18s-7-18-20-18h-6v36h6Z" fill="#07130f"/><path d="M42 35v58" stroke="#f3f1e9" stroke-width="3" stroke-linecap="round" opacity=".82"/><circle cx="42" cy="35" r="4" fill="#ffe59b"/><circle cx="42" cy="93" r="4" fill="#ded5ff"/></g>
+  <text x="160" y="91" fill="#f3f1e9" font-family="Inter,Arial,sans-serif" font-size="78" font-weight="900" letter-spacing="12">DOVI</text>
+</svg>
