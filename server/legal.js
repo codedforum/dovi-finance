@@ -82,18 +82,65 @@ function judges(ctx) {
   const st = require('./stats').cached(ctx);
   const c = ctx.cfg.claim.contract;
   const net = st.testnet ? 'Base Sepolia (test network, test USDC)' : 'Base';
-  const scan = (st.testnet ? 'https://sepolia.basescan.org/address/' : 'https://basescan.org/address/') + c;
+  const scan = (st.testnet ? 'https://base-sepolia.blockscout.com/address/' : 'https://base.blockscout.com/address/') + c;
   const usd = (Number(st.payments.totalMicro) / 1e6).toFixed(2);
-  const body = '<h1>Try DOVI in 60 seconds</h1><p class="note">Network: ' + esc(net) + '. No real money moves on the test network.</p>' +
-    '<h2>What it does</h2><p>Send dollars to an X handle or an email. The person claims them with one login and no wallet setup. If nobody claims, the sender takes them back. Payments wait in an on-chain escrow, so DOVI never holds your keys or your money.</p>' +
-    '<h2>Try it</h2><ol><li><a href="/app">Open DOVI</a> and sign in with X or an email code. A wallet is created for you.</li><li>Add test money from the Add money sheet.</li><li>Choose Send, type a handle or an email, pick an amount and review. The review shows the exact fee before you approve.</li><li>Open the claim link as the recipient and claim in one step.</li><li>See it in Activity with a receipt and a proof page you can share.</li></ol>' +
-    '<h2>What is real</h2><ul>' +
-    (c ? '<li>Escrow contract on ' + esc(net) + ': <a href="' + esc(scan) + '"><code>' + esc(c) + '</code></a></li>' : '') +
-    '<li>' + st.payments.sent + ' payments sent, ' + st.payments.claimed + ' claimed, ' + st.payments.returned + ' taken back, ' + usd + ' USDC in total. Source: the claims table, see <a href="/live">live numbers</a>.</li>' +
-    '<li>Pay many people, locked payouts, scheduled release, payment links and statements.</li>' +
-    '<li>Pay from X: after you link X and turn it on in the app, tweet <code>@DoviFinance send 2 usdc to @name</code>. The bot replies without a link and messages the recipient the claim steps, if their messages are open.</li>' +
-    '<li>A send API for agents (MCP) with a hard dollar cap per payment and per day that no tool can raise.</li></ul>' +
-    '<h2>What is not live yet</h2><ul><li>Base mainnet. DOVI stays on the test network until it is proven.</li><li>Private send, planned for the mainnet launch.</li></ul>';
+  const feePct = (Number(ctx.cfg.claim.feeBps) / 100).toString();
+  const feeMin = (Number(ctx.cfg.claim.feeMinMicro) / 1e6).toFixed(2);
+  const days = Math.round(Number(ctx.cfg.claim.expirySeconds) / 86400);
+  const VIDEO = 'https://dovi.finance/assets/video/dovi-demo.mp4';
+  const REPO = 'https://github.com/codedforum/dovi-finance';
+  const css = '<style>.jl{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}.jl a{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none}.jl a.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}'
+    + '.jst{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 6px}.jst div{border-radius:18px;padding:14px 16px;background:#bff3d6}.jst div:nth-child(2){background:#cde9ff}.jst div:nth-child(3){background:var(--gold)}.jst div:nth-child(4){background:#ded5ff}.jst div:nth-child(5){background:var(--white);border:1px solid var(--line)}.jst div:nth-child(6){background:var(--white);border:1px solid var(--line)}'
+    + '.jst b{display:block;font-size:26px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.jst span{font-size:13px;color:rgba(7,19,15,.72)}'
+    + '.jbox{border:1px solid var(--line);border-radius:20px;background:var(--white);padding:4px 18px 14px;margin:12px 0}.jbox h3{font-size:16px;margin:14px 0 4px}.page h3{font-size:16px;margin:16px 0 4px}.jtag{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--gold);margin-left:6px;vertical-align:2px}</style>';
+  const tile = (n, label) => '<div><b>' + esc(String(n)) + '</b><span>' + esc(label) + '</span></div>';
+  const body = css + '<h1>DOVI for judges</h1><p class="note">Network: ' + esc(net) + '. No real money moves on the test network.</p>'
+    + '<div class="jl"><a class="on" href="/app">Open DOVI</a><a href="' + VIDEO + '">Demo video, 5 minutes</a><a href="' + REPO + '">Source code</a><a href="/live">Live numbers</a></div>'
+
+    + '<h2>What it is and why</h2><p>Sending dollars to someone usually needs their wallet address. With DOVI you only need their X handle or email. The money waits in an escrow contract on Base until they sign in once and claim it, and if nobody claims, the sender takes it back. For someone in Nigeria, the next step is cashing out to their bank in naira, so DOVI builds that in too.</p>'
+
+    + '<h2>Try DOVI in 60 seconds</h2><ol>'
+    + '<li><a href="/app">Open DOVI</a> and sign in with X, Google or an email code. A Coinbase wallet is created for you, with no seed phrase to save.</li>'
+    + '<li>Open Add money and get test USDC from the faucet. If the shared faucet is busy, the sheet points you to the Circle faucet.</li>'
+    + '<li>Choose Send, type an X handle or a second email you control, pick an amount and review. The review shows the exact fee before you approve: ' + esc(feePct) + '% with a $' + esc(feeMin) + ' minimum for a new recipient, and no DOVI fee for someone already on DOVI.</li>'
+    + '<li>Open the claim link in a private window and sign in as the recipient. They claim in one step.</li>'
+    + '<li>Send one more payment and take it back from Activity before it is claimed. The full amount comes back, fee included. Unclaimed payments expire after ' + esc(String(days)) + ' days.</li>'
+    + '<li>Open the receipt. Each payment has a proof page that links to its transaction on the block explorer.</li></ol>'
+
+    + '<h2>Naira: dollars in, naira out <span class="jtag">Test mode</span></h2>'
+    + '<p>DOVI connects USDC to Nigerian bank accounts through Kora, a Nigerian payments partner. On dovi.finance it runs on Kora\'s sandbox with test USDC, so the naira is simulated and nothing reaches a real bank. The screens say Test mode wherever this applies.</p>'
+    + '<div class="jbox"><h3>Buy USDC with naira</h3><p>Open Add money, then Pay with naira. Enter an amount between ₦1,000 and ₦2,000,000. DOVI shows the rate and the 1% fee, then gives you a single-use bank account to transfer to. In test mode the sandbox completes the payment by itself in about 2 minutes, and the USDC lands in your DOVI account.</p>'
+    + '<h3>Cash out to a Nigerian bank</h3><p>Open Withdraw, then Cash out to naira. Pick your bank from a list of 253 Nigerian banks, OPay included, and enter the 10 digit account number. DOVI asks the partner to look up the account holder name. The sandbox only knows a few test accounts, so in test mode you type the name as the bank shows it. With real money, an account that cannot be verified is refused. The review shows what you send, the rate, the fee and the bank. You approve one USDC transfer from your own wallet, DOVI confirms it on Base, and then the partner pays out the naira.</p>'
+    + '<h3>If a payout fails</h3><p>DOVI sends the USDC back to your wallet automatically and shows Cash out returned in Activity. This already ran on the live site: a sandbox payout failed and the USDC came back by itself.</p>'
+    + '<h3>Fees and limits</h3><ul><li>1% on buys and on cash outs, shown before you approve.</li><li>The USD to NGN rate comes from ExchangeRate-API, refreshed every 30 minutes.</li><li>Each order is between ₦1,000 and ₦2,000,000. A cash out starts at $1, and one buy adds up to $500 of USDC.</li><li>Up to 3 orders in progress and 10 orders a day per person.</li></ul></div>'
+
+    + '<h2>More to try</h2><ul>'
+    + '<li><b>Ask DOVI.</b> Type a request in plain words, like pay @name 5 dollars. A language model turns it into a payment preview, and nothing moves until you approve.</li>'
+    + '<li><b>Pay from X.</b> Link X and turn it on in the app, then tweet <code>@DoviFinance send 2 usdc to @name</code>. DOVI pays from your account inside the limits you set and messages the recipient the claim steps, if their messages are open.</li>'
+    + '<li><b>Pay many people.</b> Paste a list of handles and emails, up to 50 payments, and approve once. Good for giveaways and payouts.</li>'
+    + '<li><b>Payment links and requests.</b> Share a link or a QR code to get paid, or request money from a handle.</li>'
+    + '<li><b>VIBES and the pool.</b> VIBES is a test token with its own faucet. A small pool swaps it with USDC at a 0.3% fee, and VIBES can be sent to a handle through the same escrow.</li>'
+    + '<li><b>Agent keys.</b> Let an AI tool send for you through MCP, with a dollar cap per payment and per day that you can revoke.</li></ul>'
+
+    + '<h2>On chain right now</h2><p>Counted from the escrow contract events, refreshed every minute.</p><div class="jst">'
+    + tile(st.payments.sent, 'payments sent') + tile('$' + usd, 'total sent, test USDC') + tile(st.payments.claimed, 'claimed by the recipient') + tile(st.payments.returned, 'taken back by the sender') + tile(st.payments.waiting, 'still in escrow') + tile(st.accounts, 'DOVI accounts')
+    + '</div><ul>' + (c ? '<li>Escrow contract on ' + esc(net) + ': <a href="' + esc(scan) + '"><code>' + esc(c) + '</code></a></li>' : '')
+    + '<li>The contracts pass 91 Foundry tests and the app passes 311 tests. Run them yourself from the <a href="' + REPO + '">source code</a>.</li>'
+    + '<li>See the <a href="/live">live numbers</a> page for the same counts.</li></ul>'
+
+    + '<h2>How your money stays safe</h2><ul>'
+    + '<li>Payments wait in the escrow contract, not in a DOVI account.</li>'
+    + '<li>The contract stores a hash of the handle or email, not the handle itself.</li>'
+    + '<li>A claim needs a signed note from the DOVI claim signer saying the person signed in as that handle or email, and the contract checks it before paying out.</li>'
+    + '<li>If nobody claims, the sender takes the payment back in full with no fee.</li>'
+    + '<li>Wallets are created and protected by Coinbase. DOVI never sees or stores a private key.</li></ul>'
+
+    + '<h2>Test network today, mainnet next</h2><ul>'
+    + '<li>Today: Base Sepolia with test USDC, and naira through the partner sandbox.</li>'
+    + '<li>Next: Base mainnet with real USDC. The deploy script is written and a dress rehearsal on a Base fork passes. A multisig owner and an upgrade delay go in before launch.</li>'
+    + '<li>Next: real naira once the partner live account is switched on.</li>'
+    + '<li>Later: private send, which keeps the handle off the chain.</li></ul>'
+    + '<div class="jl"><a class="on" href="/app">Open DOVI</a><a href="' + VIDEO + '">Demo video</a><a href="' + REPO + '">Source code</a></div>';
   return appLinks(ctx, fs.readFileSync(path.join(ctx.cfg.publicDir, 'legal.html'), 'utf8').replace('<!--TITLE-->', 'Judges.').replace('<!--LEGAL-->', () => body));
 }
 

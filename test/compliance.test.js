@@ -184,6 +184,9 @@ test('judges page is public, shows live counts and the contract link, and has no
   assert.equal(r.status, 200);
   assert.match(html, /Try DOVI in 60 seconds/);
   assert.match(html, /payments sent/);
+  assert.match(html, /253 Nigerian banks/);
+  assert.match(html, /github\.com\/codedforum\/dovi-finance/);
+  assert.ok(!/github\.com\/codedforum\/dovi"/.test(html));
   assert.match(html, /0x07e5bE5687b739024f28bf8c85faf1d6E14fDbd4/);
   const text = html.replace(/<[^>]+>/g, '');
   assert.ok(!/[—·]/.test(text));
