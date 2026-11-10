@@ -35,7 +35,7 @@ const { listActivity } = require('./activity');
 const agent = require('./agent/engine');
 const { earnings } = require('./indexer');
 
-const PAGES = { '/': '/index.html', '/app': '/app.html', '/app/': '/app.html', '/help': '/help.html', '/terms': '/terms.html', '/privacy': '/privacy.html', '/notifications': '/notifications.html', '/live': '/live.html', '/announcement': '/announcement.html' };
+const PAGES = { '/': '/index.html', '/app': '/app.html', '/app/': '/app.html', '/help': '/help.html', '/terms': '/terms.html', '/privacy': '/privacy.html', '/notifications': '/notifications.html', '/live': '/live.html', '/announcement': '/announcement.html', '/proof': '/proof.html' };
 
 const CDP_SDK_PINNED = 'https://esm.sh/@coinbase/cdp-core@0.0.128';
 /* the wallet SDK is an exact version, never a floating one. An override is accepted only if it is an exact version of the same package or a path on this site */
@@ -619,7 +619,7 @@ function createApp(ctx) {
       if (v) { title = 'Receipt: ' + formatUsd(BigInt(v.amountMicro)) + (v.role === 'sender' ? ' sent to ' + v.to : ' from ' + v.from) + ' | DOVI'; desc = 'A DOVI payment receipt on ' + v.network + '. The transactions can be checked on the block explorer.'; }
     } catch { /* keep defaults */ }
     const img = ctx.cfg.ogImage || (ctx.cfg.publicUrl + '/brand/dovi-og-background-20260828.png');
-    const meta = '<title>' + attr(title) + '</title><meta name="description" content="' + attr(desc) + '"><meta name="dovi-app" content="' + attr(ctx.cfg.publicUrl) + '"><meta property="og:url" content="' + attr(ctx.cfg.payBaseUrl + pathname) + '"><meta property="og:type" content="website"><meta property="og:site_name" content="DOVI"><meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(desc) + '"><meta property="og:image" content="' + attr(img) + '"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="' + attr(title) + '"><meta name="twitter:description" content="' + attr(desc) + '"><meta name="twitter:image" content="' + attr(img) + '">';
+    const meta = '<title>' + attr(title) + '</title><meta name="description" content="' + attr(desc) + '"><meta name="robots" content="noindex"><meta name="dovi-app" content="' + attr(ctx.cfg.publicUrl) + '"><meta property="og:url" content="' + attr(ctx.cfg.payBaseUrl + pathname) + '"><meta property="og:type" content="website"><meta property="og:site_name" content="DOVI"><meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(desc) + '"><meta property="og:image" content="' + attr(img) + '"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="' + attr(title) + '"><meta name="twitter:description" content="' + attr(desc) + '"><meta name="twitter:image" content="' + attr(img) + '">';
     html = html.replace(/<title>[\s\S]*?<\/title>/, () => meta);
     res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-cache', ...secHeaders() });
     if (req.method === 'HEAD') { res.end(); return true; }
@@ -633,7 +633,7 @@ function createApp(ctx) {
     let title = 'DOVI giveaway'; let desc = 'A giveaway draw run by DOVI. The winners are picked at random and the draw can be checked.';
     try { const v = giveaway.publicView(ctx, pathname.split('/')[2]); if (v) { title = (v.status === 'drawn' ? 'Giveaway winners' : 'Giveaway') + (v.creator ? ' from ' + v.creator : '') + ' | DOVI'; desc = v.winners + (v.winners === 1 ? ' winner' : ' winners') + ' picked at random from people who retweeted and replied. The draw record is public.'; } } catch { /* keep defaults */ }
     const img = ctx.cfg.ogImage || (ctx.cfg.publicUrl + '/brand/dovi-og-background-20260828.png');
-    const meta = '<title>' + attr(title) + '</title><meta name="description" content="' + attr(desc) + '"><meta name="dovi-app" content="' + attr(ctx.cfg.publicUrl) + '"><meta property="og:url" content="' + attr(ctx.cfg.payBaseUrl + pathname) + '"><meta property="og:type" content="website"><meta property="og:site_name" content="DOVI"><meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(desc) + '"><meta property="og:image" content="' + attr(img) + '"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="' + attr(title) + '"><meta name="twitter:description" content="' + attr(desc) + '"><meta name="twitter:image" content="' + attr(img) + '">';
+    const meta = '<title>' + attr(title) + '</title><meta name="description" content="' + attr(desc) + '"><meta name="robots" content="noindex"><meta name="dovi-app" content="' + attr(ctx.cfg.publicUrl) + '"><meta property="og:url" content="' + attr(ctx.cfg.payBaseUrl + pathname) + '"><meta property="og:type" content="website"><meta property="og:site_name" content="DOVI"><meta property="og:title" content="' + attr(title) + '"><meta property="og:description" content="' + attr(desc) + '"><meta property="og:image" content="' + attr(img) + '"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="' + attr(title) + '"><meta name="twitter:description" content="' + attr(desc) + '"><meta name="twitter:image" content="' + attr(img) + '">';
     html = html.replace(/<title>[\s\S]*?<\/title>/, () => meta);
     res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-cache', ...secHeaders() });
     if (req.method === 'HEAD') { res.end(); return true; }
@@ -644,7 +644,7 @@ function createApp(ctx) {
     let url;
     try { url = new URL(req.url, 'http://localhost'); } catch { res.writeHead(400, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }); return res.end('{"error":"bad_request","message":"Bad request."}'); }
     const pathname = url.pathname;
-    if (ctx.cfg.base.testnet) res.setHeader('x-robots-tag', 'noindex, nofollow');
+    if (ctx.cfg.base.testnet && !ctx.cfg.indexable) res.setHeader('x-robots-tag', 'noindex, nofollow');
     const t0 = Date.now(); const rid = require('node:crypto').randomBytes(6).toString('hex');
     res.setHeader('x-request-id', rid);
     if (ctx.reqlog) res.on('finish', () => ctx.reqlog({ ts: new Date(t0).toISOString(), rid, m: req.method, p: require('./reqlog').redact(pathname), s: res.statusCode, ms: Date.now() - t0, u: req.__uid || null }));
@@ -685,7 +685,13 @@ function createApp(ctx) {
       if (proofPage && (req.method === 'GET' || req.method === 'HEAD')) { if (await serveProofPage(req, res, pathname)) return; }
       const payPage = /^\/(?:pay\/@?[A-Za-z0-9_]{1,15}|p\/[2-9a-hj-km-np-zA-HJ-NP-Z]{8})$/.test(pathname);
       if (payPage && (req.method === 'GET' || req.method === 'HEAD')) { if (await servePayPage(req, res, pathname)) return; }
-      if (pathname === '/robots.txt' && ctx.cfg.base.testnet) { res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache' }); return res.end('User-agent: *\nDisallow: /\n'); }
+      if (pathname === '/robots.txt') {
+        if (ctx.cfg.base.testnet && !ctx.cfg.indexable) { res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache' }); return res.end('User-agent: *\nDisallow: /\n'); }
+        if (serveStatic(ctx.cfg.publicDir, '/robots.txt', req, res)) return;
+      }
+      if (pathname === '/sitemap.xml') {
+        if (serveStatic(ctx.cfg.publicDir, '/sitemap.xml', req, res)) return;
+      }
       const claimPage = /^\/(?:claim\/0x[0-9a-f]{64}|c\/[2-9a-hj-km-np-zA-HJ-NP-Z]{8})$/.exec(pathname);
       if (claimPage && (req.method === 'GET' || req.method === 'HEAD')) { if (serveStatic(ctx.cfg.publicDir, '/claim.html', req, res)) return; }
       if ((req.method === 'GET' || req.method === 'HEAD') && pathname === '/waitlist') { res.writeHead(302, { location: '/app', 'cache-control': 'no-store' }); res.end(); return; }

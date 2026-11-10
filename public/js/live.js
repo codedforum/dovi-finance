@@ -11,6 +11,7 @@ async function main() {
   try { d = await api('/api/public/stats'); } catch { view.innerHTML = '<div class="card paycard"><div class="pay-gone"><h2>Numbers are not available right now</h2><p>Please try again in a minute.</p></div></div>'; return; }
   const p = d.payments;
   view.innerHTML = '<div class="card paycard"><div class="proof-top"><span class="chip ' + (d.testnet ? 'test' : 'live') + '">' + esc(d.network) + (d.testnet ? ', test network' : '') + '</span><span class="proof-st done">Live</span></div><small class="proof-k">DOVI so far</small><h1 class="live-h">Real counts, with the source under each one</h1>'
+    + '<div style="margin:14px 0 18px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--white)"><picture><source srcset="/brand/proof-onchain.avif" type="image/avif"><img src="/brand/proof-onchain.webp" alt="On chain escrow verification illustration in dark green 3d glass" width="1600" height="905" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border-radius:18px"></picture></div>'
     + '<div class="stats" style="grid-template-columns:1fr 1fr">'
     + tile('Payments sent', String(p.sent), 'Payments created on the escrow contract', 't-mint')
     + tile('Total sent', usd(d.payments.totalMicro), 'Sum of those payments, USDC', 't-blue')

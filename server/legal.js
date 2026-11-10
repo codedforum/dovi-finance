@@ -20,7 +20,7 @@ const contactLine = (b) => (b.email ? 'Email <a href="mailto:' + esc(b.email) + 
 const beta = '<p class="note">Beta version, last updated ' + UPDATED + '. A reviewed version will replace it before DOVI opens more widely.</p>';
 
 const PAGES = {
-  privacy: { title: 'Privacy.', body: (b) => '<h1>Privacy</h1>' + beta +
+  privacy: { title: 'DOVI privacy policy', desc: 'How DOVI protects your privacy. We never store private keys or seed phrases, collect only what is needed, and use no advertising trackers.', canonical: 'https://dovi.finance/privacy', body: (b) => '<h1>Privacy</h1>' + beta +
     '<h2>Who we are</h2>' + businessBlock(b) +
     '<h2>What we collect</h2><ul><li>Your sign in identity: your email, your Google account id, or your X account id and handle.</li><li>Your wallet address on Base.</li><li>Payment records: amounts, the recipient you typed, status, time, and notes you add.</li><li>Messages you type to Ask DOVI, so it can answer and show your history.</li><li>Your signed in devices (a label and the last time each was used) and your notification settings.</li><li>If you joined the early waitlist: your X handle and picture, your referral code, and an email if you added one.</li><li>If you report a problem: what you write.</li><li>Your IP address is used in memory for rate limits and abuse checks. Our request logs keep the page, status, timing and an account number, not your IP address.</li></ul>' +
     '<h2>What we do not collect</h2><p>We never see or store your private keys, your password or a seed phrase. Your wallet is created and protected by Coinbase through its embedded wallet service. We use no advertising trackers and no analytics tools.</p>' +
@@ -32,7 +32,7 @@ const PAGES = {
     '<h2>Children</h2><p>DOVI is not for anyone under 18.</p>' +
     '<h2>Changes</h2><p>If this page changes in a way that matters, we will say so in the app.</p>' +
     '<h2>Contact</h2><p>' + contactLine(b) + '</p>' },
-  terms: { title: 'Terms.', body: (b) => '<h1>Terms</h1>' + beta +
+  terms: { title: 'DOVI terms of service', desc: 'Terms of service for DOVI. Plain-language guide to walletless accounts, fees, limits, and smart contract escrow on Base.', canonical: 'https://dovi.finance/terms', body: (b) => '<h1>Terms</h1>' + beta +
     '<h2>Who is offering DOVI</h2>' + businessBlock(b) +
     '<h2>What DOVI is</h2><p>DOVI is a beta service that lets you hold USDC on Base in a wallet created for you, send it to an X handle or an email, and claim payments sent to you. DOVI does not hold your private keys. Payments to new recipients are held in a smart contract until they are claimed or taken back.</p>' +
     '<h2>What DOVI is not</h2><p>DOVI is not a bank and balances are not insured deposits. DOVI does not give investment, tax or legal advice.</p>' +
@@ -44,7 +44,7 @@ const PAGES = {
     '<h2>Our liability</h2><p>To the extent the law allows, DOVI is provided as is, and we are not liable for indirect loss or for losses caused by blockchains, stablecoin issuers or other third parties.</p>' +
     '<h2>Changes</h2><p>We may update these terms. If a change matters, we will tell you in the app before it applies.</p>' +
     '<h2>Contact</h2><p>' + contactLine(b) + '</p>' },
-  refunds: { title: 'Refunds.', body: (b) => '<h1>Refunds</h1>' + beta +
+  refunds: { title: 'DOVI refund policy', desc: 'How refunds and reclaim work on DOVI. Take back unclaimed payments in full with no fee at any time before claiming.', canonical: 'https://dovi.finance/refunds', body: (b) => '<h1>Refunds</h1>' + beta +
     '<h2>Taking a payment back</h2><p>You can take back a payment you sent, in full, any time before the recipient claims it. No DOVI fee is charged and nothing needs approval. Open Activity, find the payment, and choose Take it back. A payment that expires unclaimed can also be taken back.</p>' +
     '<h2>Locked payments</h2><p>If you chose to lock a payment, you cannot take it back until the lock ends. The recipient can still claim it during the lock. The lock time is shown before you send.</p>' +
     '<h2>After it is claimed</h2><p>A claimed payment is final. It moves on the blockchain and neither you nor DOVI can reverse it. Check the recipient before you approve.</p>' +
@@ -52,7 +52,7 @@ const PAGES = {
     '<h2>Adding money</h2><p>Card and bank purchases are made with Coinbase or Transak, not with DOVI. Their own refund rules apply to those purchases. On the test network no real money is involved.</p>' +
     '<h2>Network costs</h2><p>Blockchain network costs, where they apply, go to the network and cannot be refunded.</p>' +
     '<h2>How to ask</h2><p>' + contactLine(b) + '</p>' },
-  cookies: { title: 'Cookies.', body: (b) => '<h1>Cookies</h1>' + beta +
+  cookies: { title: 'DOVI cookie policy', desc: 'Cookie policy for DOVI. We use only strictly necessary authentication cookies and no advertising or third-party tracking.', canonical: 'https://dovi.finance/cookies', body: (b) => '<h1>Cookies</h1>' + beta +
     '<p>DOVI uses only the cookies and browser storage it needs to work. We do not use advertising, analytics or tracking cookies, so there is nothing to switch off.</p>' +
     '<h2>Cookies we set</h2><table class="legaltable"><thead><tr><th scope="col">Name</th><th scope="col">What it does</th><th scope="col">How long</th></tr></thead><tbody>' +
     '<tr><td><code>dovi_sess</code></td><td>Keeps you signed in. It is HttpOnly, so pages cannot read it.</td><td>Until you sign out or it expires</td></tr>' +
@@ -60,7 +60,7 @@ const PAGES = {
     '<h2>Browser storage we use</h2><ul><li><code>dovi.cookie-notice</code> in local storage remembers that you saw the cookie notice.</li><li>A few <code>dovi.*</code> items in session storage hold drafts, such as an unfinished batch, until you close the tab.</li></ul>' +
     '<h2>Third parties</h2><ul><li><b>Coinbase</b> wallet code (delivered by esm.sh) may keep wallet session data in your browser so you stay signed in to your wallet.</li><li><b>Google</b> loads only if you press Sign in with Google.</li><li><b>Coinbase Pay</b> opens only if you add money on mainnet.</li></ul><p>These are needed for the feature you pick. You can clear them in your browser settings, which will sign you out.</p>' +
     '<h2>Questions</h2><p>' + contactLine(b) + ' See also <a href="/privacy">Privacy</a>.</p>' },
-  'data-request': { title: 'Delete my data.', body: (b) => '<h1>Delete my data</h1>' + beta +
+  'data-request': { title: 'Delete or export your data: DOVI', desc: 'How to request a full download or complete deletion of your personal data from your DOVI account.', canonical: 'https://dovi.finance/data-request', body: (b) => '<h1>Delete my data</h1>' + beta +
     '<p>You can ask DOVI to delete the data it holds about you, or download a copy first.</p>' +
     '<h2>How</h2><ol><li>Sign in to DOVI and open <b>Account</b>.</li><li>Under <b>Your data</b>, choose <b>Download my data</b> if you want a copy.</li><li>Choose <b>Request deletion</b>. We record it, and you can cancel it while it is open.</li></ol><p><a class="btn sm" href="/app#account">Open my account</a></p>' +
     '<p>We ask you to sign in so we know the request is really from you.</p>' +
@@ -75,7 +75,28 @@ function appLinks(ctx, html) { return html.replace(/href="\/app/g, 'href="' + ct
 function render(ctx, name) {
   const pg = PAGES[name]; if (!pg) return null;
   const shell = fs.readFileSync(path.join(ctx.cfg.publicDir, 'legal.html'), 'utf8');
-  return appLinks(ctx, shell.replace('<!--TITLE-->', esc(pg.title)).replace('<!--LEGAL-->', () => pg.body(ctx.cfg.business || {})));
+  const title = pg.title;
+  const desc = pg.desc || '';
+  const can = pg.canonical || (ctx.cfg.publicUrl + '/' + name);
+  const img = ctx.cfg.ogImage || 'https://dovi.finance/brand/og.jpg';
+  const meta = '<meta name="description" content="' + esc(desc) + '">'
+    + '<link rel="canonical" href="' + esc(can) + '">'
+    + '<meta property="og:type" content="article">'
+    + '<meta property="og:site_name" content="DOVI">'
+    + '<meta property="og:url" content="' + esc(can) + '">'
+    + '<meta property="og:title" content="' + esc(title) + '">'
+    + '<meta property="og:description" content="' + esc(desc) + '">'
+    + '<meta property="og:image" content="' + esc(img) + '">'
+    + '<meta property="og:image:width" content="1200">'
+    + '<meta property="og:image:height" content="630">'
+    + '<meta property="og:image:alt" content="' + esc(title) + '">'
+    + '<meta name="twitter:card" content="summary_large_image">'
+    + '<meta name="twitter:site" content="@DoviFinance">'
+    + '<meta name="twitter:title" content="' + esc(title) + '">'
+    + '<meta name="twitter:description" content="' + esc(desc) + '">'
+    + '<meta name="twitter:image" content="' + esc(img) + '">'
+    + '<meta name="twitter:image:alt" content="' + esc(title) + '">';
+  return appLinks(ctx, shell.replace('<!--TITLE-->', esc(title)).replace('<!--META-->', meta).replace('<!--LEGAL-->', () => pg.body(ctx.cfg.business || {})));
 }
 
 function judges(ctx) {
@@ -109,6 +130,9 @@ function judges(ctx) {
 
     + '<h2>Naira: dollars in, naira out <span class="jtag">Test mode</span></h2>'
     + '<p>DOVI connects USDC to Nigerian bank accounts through Kora, a Nigerian payments partner. On dovi.finance it runs on Kora\'s sandbox with test USDC, so the naira is simulated and nothing reaches a real bank. The screens say Test mode wherever this applies.</p>'
+    + '<div style="margin:16px 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--white)">'
+    + '<picture><source srcset="/brand/naira-cashout.avif" type="image/avif"><img src="/brand/naira-cashout.webp" alt="Naira cash out illustration in dark green 3d glass showing bank payout" width="1600" height="905" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border-radius:18px"></picture>'
+    + '</div>'
     + '<div class="jbox"><h3>Buy USDC with naira</h3><p>Open Add money, then Pay with naira. Enter an amount between ₦1,000 and ₦2,000,000. DOVI shows the rate and the 1% fee, then gives you a single-use bank account to transfer to. In test mode the sandbox completes the payment by itself in about 2 minutes, and the USDC lands in your DOVI account.</p>'
     + '<h3>Cash out to a Nigerian bank</h3><p>Open Withdraw, then Cash out to naira. Pick your bank from a list of 253 Nigerian banks, OPay included, and enter the 10 digit account number. DOVI asks the partner to look up the account holder name. The sandbox only knows a few test accounts, so in test mode you type the name as the bank shows it. With real money, an account that cannot be verified is refused. The review shows what you send, the rate, the fee and the bank. You approve one USDC transfer from your own wallet, DOVI confirms it on Base, and then the partner pays out the naira.</p>'
     + '<h3>If a payout fails</h3><p>DOVI sends the USDC back to your wallet automatically and shows Cash out returned in Activity. This already ran on the live site: a sandbox payout failed and the USDC came back by itself.</p>'
@@ -141,12 +165,34 @@ function judges(ctx) {
     + '<li>Next: real naira once the partner live account is switched on.</li>'
     + '<li>Later: private send, which keeps the handle off the chain.</li></ul>'
     + '<div class="jl"><a class="on" href="/app">Open DOVI</a><a href="' + VIDEO + '">Demo video</a><a href="' + REPO + '">Source code</a></div>';
-  return appLinks(ctx, fs.readFileSync(path.join(ctx.cfg.publicDir, 'legal.html'), 'utf8').replace('<!--TITLE-->', 'Judges.').replace('<!--LEGAL-->', () => body));
+  const jTitle = 'Judges.';
+  const fullTitle = 'DOVI for judges: overview and live demo';
+  const jDesc = 'Judge evaluation guide for DOVI. Architecture, live escrow statistics on Base, naira settlement details, and quick test walkthrough.';
+  const jCan = 'https://dovi.finance/judges';
+  const jImg = ctx.cfg.ogImage || 'https://dovi.finance/brand/og.jpg';
+  const jMeta = '<meta name="description" content="' + esc(jDesc) + '">'
+    + '<link rel="canonical" href="' + esc(jCan) + '">'
+    + '<meta property="og:type" content="article">'
+    + '<meta property="og:site_name" content="DOVI">'
+    + '<meta property="og:url" content="' + esc(jCan) + '">'
+    + '<meta property="og:title" content="' + esc(fullTitle) + '">'
+    + '<meta property="og:description" content="' + esc(jDesc) + '">'
+    + '<meta property="og:image" content="' + esc(jImg) + '">'
+    + '<meta property="og:image:width" content="1200">'
+    + '<meta property="og:image:height" content="630">'
+    + '<meta property="og:image:alt" content="' + esc(fullTitle) + '">'
+    + '<meta name="twitter:card" content="summary_large_image">'
+    + '<meta name="twitter:site" content="@DoviFinance">'
+    + '<meta name="twitter:title" content="' + esc(fullTitle) + '">'
+    + '<meta name="twitter:description" content="' + esc(jDesc) + '">'
+    + '<meta name="twitter:image" content="' + esc(jImg) + '">'
+    + '<meta name="twitter:image:alt" content="' + esc(fullTitle) + '">';
+  return appLinks(ctx, fs.readFileSync(path.join(ctx.cfg.publicDir, 'legal.html'), 'utf8').replace('<!--TITLE-->', esc(fullTitle)).replace('<!--META-->', jMeta).replace('<!--LEGAL-->', () => body));
 }
 
 function unsubPage(ctx, { title, body }) {
   const shell = fs.readFileSync(path.join(ctx.cfg.publicDir, 'legal.html'), 'utf8');
-  return appLinks(ctx, shell.replace('<!--TITLE-->', esc(title)).replace('<!--LEGAL-->', () => body)).replace(/<meta name="theme-color"/, '<meta name="robots" content="noindex"><meta name="theme-color"');
+  return appLinks(ctx, shell.replace('<!--TITLE-->', esc(title)).replace('<!--META-->', '<meta name="robots" content="noindex">').replace('<!--LEGAL-->', () => body)).replace(/<meta name="theme-color"/, '<meta name="robots" content="noindex"><meta name="theme-color"');
 }
 
 function unsubConfirm(ctx, t, email) {

@@ -16,8 +16,18 @@ function txRow(label, hash, base) {
   return '<div class="r"><span>' + esc(label) + '</span>' + (base ? '<a href="' + esc(base + hash) + '" target="_blank" rel="noopener"><b>' + esc(short) + '</b></a>' : '<b>' + esc(short) + '</b>') + '</div>';
 }
 
+function proofOverview() {
+  view.innerHTML = '<div class="card paycard"><div class="proof-top"><span class="chip live">Base</span><span class="proof-st done">Live</span></div>'
+    + '<small class="proof-k">Escrow verification</small><h1 class="live-h">Verify payments on Base</h1>'
+    + '<div style="margin:14px 0 18px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--white)"><picture><source srcset="/brand/proof-onchain.avif" type="image/avif"><img src="/brand/proof-onchain.webp" alt="On chain escrow verification illustration in dark green 3d glass" width="1600" height="905" loading="lazy" decoding="async" style="display:block;width:100%;max-width:100%;height:auto;border-radius:18px"></picture></div>'
+    + '<p class="note" style="text-align:center">Every DOVI payment has a public cryptographic receipt on Base. Anyone can check the escrow and settlement on the block explorer.</p><a class="btn block mint" href="https://dovi.finance/">Pay anyone by handle with DOVI</a></div>';
+}
+
 async function main() {
-  if (!code) return gone();
+  if (!code) {
+    if (location.pathname.startsWith('/proof')) return proofOverview();
+    return gone();
+  }
   let r;
   try { r = await api('/api/receipt/' + code); } catch { return gone(); }
   const st = STATUS[r.status] || [r.status, 'wait'];

@@ -32,6 +32,7 @@ function loadConfig(env = process.env) {
     doviEnv: env.DOVI_ENV || 'preview',
     dbPath: env.DOVI_DB_PATH || path.join(root, 'data', 'dovi.db'),
     publicDir: path.join(root, 'public'),
+    indexable: env.DOVI_INDEXABLE === '1' || env.DOVI_INDEXABLE === 'true',
     network: env.DOVI_NETWORK === 'sepolia' ? 'sepolia' : 'mainnet',
     base: env.DOVI_NETWORK === 'sepolia' ? {
       chainId: 84532,

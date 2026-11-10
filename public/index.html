@@ -3,17 +3,138 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07130f">
-  <meta name="description" content="DOVI lets you send dollars to any X handle or email on Base. They claim with one login. No seed phrase, no wallet extension.">
-  <meta name="robots" content="noindex, nofollow">
+  <title>DOVI finance: Send USDC to an X handle or email</title>
+  <meta name="description" content="Send USDC to any X handle or email on Base. Claim with one login. Cash out USDC to Nigerian naira with low fees and no seed phrase.">
   <meta name="application-name" content="DOVI">
+  <meta name="theme-color" content="#07130f">
+  <link rel="canonical" href="https://dovi.finance/">
+  <link rel="manifest" href="/manifest.json">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="DOVI">
   <meta property="og:url" content="https://dovi.finance/">
-  <meta property="og:title" content="DOVI. Send dollars to anyone, by handle.">
-  <meta property="og:description" content="Type an X handle or an email, send dollars on Base, and they claim with one login.">
-  <meta property="og:image" content="https://dovi.finance/brand/dovi-claim-20261025.jpg">
-  <title>DOVI. Your handle is your payment address</title>
+  <meta property="og:title" content="DOVI finance: Send USDC to an X handle or email">
+  <meta property="og:description" content="Send USDC to any X handle or email on Base. Claim with one login, or cash out USDC to Nigerian naira.">
+  <meta property="og:image" content="https://dovi.finance/brand/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DOVI: Send USDC to an X handle or email on Base">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@DoviFinance">
+  <meta name="twitter:title" content="DOVI finance: Send USDC to an X handle or email">
+  <meta name="twitter:description" content="Send USDC to any X handle or email on Base. Claim with one login, or cash out USDC to Nigerian naira.">
+  <meta name="twitter:image" content="https://dovi.finance/brand/og.jpg">
+  <meta name="twitter:image:alt" content="DOVI: Send USDC to an X handle or email on Base">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dovi.finance/#organization",
+        "name": "DOVI",
+        "url": "https://dovi.finance/",
+        "logo": "https://dovi.finance/brand/dovi-app-icon-192.png",
+        "sameAs": [
+          "https://x.com/DoviFinance",
+          "https://github.com/codedforum/dovi-finance"
+        ],
+        "description": "DOVI lets you send USDC dollars to any X handle or email on Base. Recipients claim with one login."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dovi.finance/#website",
+        "url": "https://dovi.finance/",
+        "name": "DOVI",
+        "publisher": {
+          "@id": "https://dovi.finance/#organization"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://dovi.finance/#app",
+        "name": "DOVI",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "url": "https://dovi.finance/app",
+        "publisher": {
+          "@id": "https://dovi.finance/#organization"
+        },
+        "description": "A walletless dollar payments application on Base. Send USDC to an X handle or email, claim with one login, or cash out to Nigerian naira.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FinancialProduct",
+        "@id": "https://dovi.finance/#service",
+        "name": "DOVI P2P Payments",
+        "provider": {
+          "@id": "https://dovi.finance/#organization"
+        },
+        "url": "https://dovi.finance/",
+        "description": "Peer to peer USDC payments to X handles and email addresses on Base with smart contract escrow protection and Nigerian naira off-ramp.",
+        "feesAndCommissionsSpecification": "Free for existing users. 1% with $0.10 minimum for new recipients, charged only when claimed."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dovi.finance/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What if they never claim it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The claim expires after 7 days and the money returns to you in full, with no fee. You can also reclaim it yourself at any time before it is claimed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does it cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sending to someone already on DOVI has no DOVI fee. Sending to a new handle or email costs 1 percent, minimum $0.10, paid by you on top, and only if they claim. The review screen shows the exact total before you approve."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a crypto wallet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. You sign in with email, Google or X and DOVI creates the account. There is no seed phrase and nothing to install. The person you pay does not need one either."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can DOVI move my money without me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Only inside limits you set yourself. A normal send needs your approval. If you turn on Pay from X or create an agent key, DOVI sends within the per payment and daily limits you chose, and you can switch them off or revoke a key at any time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my balance insured?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Balances are dollar stablecoins on Base, not bank deposits, and they are not insured. The beta has low limits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which chains and currencies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "During the beta, test USDC on the Base Sepolia test network. Other chains and local currencies appear only after a real small send is proven."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" href="/brand/dovi-app-icon-192.png">
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
@@ -289,7 +410,7 @@
   body.past-hero .mobile-bar{transform:none;opacity:1;pointer-events:auto}
 }
 </style>
-<link rel="stylesheet" href="/depth.css?v=dev">
+<link rel="stylesheet" href="/depth.css?v=c7799c7808">
 </head>
 <body>
 <a class="skip" href="#how">Skip to content</a>
@@ -507,7 +628,7 @@
       <span class="pulse"></span><span class="sheen"></span><span class="fxp"></span>
       <div class="engine-copy reveal">
         <span class="kicker" style="color:var(--gold)">One engine</span>
-        <h2 class="head" id="engh" style="color:var(--paper)">Every surface runs through one protected core.</h2>
+        <h2 class="head" id="engh" style="color:var(--paper)">All surfaces run through one protected core.</h2>
         <p class="sub" style="color:var(--muted-d)">The app, the agent, replies on X and chat connectors all prepare the action. Approval and signing happen in one place, on DOVI.</p>
       </div>
     </div>
@@ -625,11 +746,11 @@
           <p style="max-width:22em;font-size:14px;line-height:1.6;color:var(--muted-d)">Send dollars to anyone, by handle. A walletless dollar account, in beta on Base.</p>
         </div>
         <div class="foot-links">
-          <div class="foot-col"><b>Product</b><a href="/app">Open DOVI</a><a href="#send">Send</a><a href="/help">Help</a></div>
-          <div class="foot-col"><b>Learn</b><a href="#how">How it works</a><a href="#demo">Try the demo</a><a href="#roadmap">Roadmap</a><a href="#security">Security</a></div>
+          <div class="foot-col"><b>Product</b><a href="/app">Open DOVI app</a><a href="/live">Live network numbers</a><a href="/judges">Judges walkthrough</a><a href="/proof">Proof of escrow</a><a href="/help">Help and safety</a></div>
+          <div class="foot-col"><b>Learn</b><a href="#how">How it works</a><a href="#demo">Try the demo</a><a href="#roadmap">Roadmap</a><a href="#security">Security</a><a href="https://x.com/DoviFinance" target="_blank" rel="noopener">DOVI on X</a><a href="https://github.com/codedforum/dovi-finance" target="_blank" rel="noopener">Public code on GitHub</a></div>
         </div>
       </div>
-      <p class="fineprint">DOVI runs on Base. It is in beta, on the Base Sepolia test network, with low limits. Balances are not insured deposits. A fee of 1 percent, minimum $0.10, applies when someone claims a payment. <a href="/terms">Terms</a>, <a href="/privacy">Privacy</a>, <a href="/refunds">Refunds</a>, <a href="/cookies">Cookies</a> and <a href="/data-request">Delete my data</a>.</p>
+      <p class="fineprint">DOVI runs on Base. It is in beta, on the Base Sepolia test network, with low limits. Balances are not insured deposits. A fee of 1 percent, minimum $0.10, applies when someone claims a payment. <a href="/terms">Terms of service</a>, <a href="/privacy">Privacy policy</a>, <a href="/refunds">Refund policy</a>, <a href="/cookies">Cookie policy</a> and <a href="/data-request">Delete or export data</a>.</p>
     </div>
   </footer>
 
@@ -708,6 +829,6 @@
     <a class="btn btn-mint" href="/app">Open DOVI</a>
   </div>
 <script>(function(){var t=function(){document.body.classList.toggle('past-hero',window.scrollY>window.innerHeight*0.85)};addEventListener('scroll',t,{passive:true});t()})()</script>
-<script type="module" src="/js/consent.js?v=dev"></script>
+<script type="module" src="/js/consent.js?v=c7799c7808"></script>
 </body>
 </html>

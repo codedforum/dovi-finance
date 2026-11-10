@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Allow: /app
+Allow: /live
+Allow: /judges
+Allow: /help
+Allow: /terms
+Allow: /privacy
+Allow: /proof
+Allow: /announcement
+Allow: /refunds
+Allow: /cookies
+Allow: /data-request
+
+Disallow: /api/
+Disallow: /claim/
+Disallow: /c/
+Disallow: /pay/
+Disallow: /p/
+Disallow: /r/
+Disallow: /g/
+Disallow: /notifications
+Disallow: /unsubscribe
+Disallow: /cdpapi/
+Disallow: /cdpwallet/
+
+Sitemap: https://dovi.finance/sitemap.xml
