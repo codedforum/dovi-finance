@@ -37,6 +37,20 @@ Escrow proxy on Base Sepolia: [0x07e5bE5687b739024f28bf8c85faf1d6E14fDbd4](https
 
 Node.js and SQLite server, viem, Coinbase CDP SDK wallets, Solidity contracts tested with Foundry, deployed on Base Sepolia.
 
+## Build history
+
+This repo is a curated public mirror of DOVI's private working repo. The private repo holds 167 commits made between 18 Oct and 10 Nov 2026, and it also keeps deploy scripts and server configs that stay private. Everything needed to read, test, and judge the app is here.
+
+- 18 Oct: project start, chain registry, config, and first claim flow
+- 25 Oct: landing page redesign with demo and FAQ
+- 26 Oct: account dashboard with limits and linked X accounts
+- 27 Oct: upgradeable DoviClaim escrow behind a proxy with delayed upgrades, plus Foundry tests
+- 3 Nov: judges page and Vibeathon submission
+- 6 Nov: payment intent model, tested on 50 labelled posts with zero unsafe results
+- 8 Nov: naira rail to buy USDC and cash out to a Nigerian bank, in test mode
+- 9 Nov: live numbers counted from escrow contract events, matching the explorer
+- 10 Nov: SEO, metadata, and new illustrations
+
 ## Run the tests
 
 Needs Node 25 or newer. Foundry is needed for the contract tests.
